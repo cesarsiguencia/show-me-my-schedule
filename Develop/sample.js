@@ -2,7 +2,6 @@
 
 var assignments = []
 var scheduleArea = document.querySelector(".container")
-var hourBoxArea = document.querySelector(".row")
 var timeElement = document.querySelector("#currentDay")
 
 
