@@ -3,24 +3,15 @@
 var assignments = []
 var scheduleArea = document.querySelector(".container")
 var hourBoxArea = document.querySelector(".row")
-
 var timeElement = document.querySelector("#currentDay")
-var AM9 = document.querySelector("#one")
-var AM9Btn = document.querySelector("#btn-one")
-var AM10 = document.querySelector("#block-two")
-var AM11 = document.querySelector("#block-three")
-
 
 
 var showTime = function(){
     var time = moment().format('MMMM Do YYYY, h:mm a')
     timeElement.innerHTML = "<p>" + time + "</p>";
-
-
 }
 showTime()
 setInterval(showTime ,10000)
-
 
 
 var loadTasks = function(){
@@ -28,6 +19,11 @@ var loadTasks = function(){
     var saved = JSON.parse(localStorage.getItem("tasks"))
     console.log(saved)
     assignments = saved
+    console.log(assignments)
+
+    if(!assignments){
+        assignments = []
+    }
     console.log(assignments)
 
     assignments.forEach(task => {
@@ -50,30 +46,6 @@ var loadTasks = function(){
         // }
     })
 
-
-
-
-
-
-    // var load9AM = function(){
-
-
-    // }
-
-    // load9AM()
-
-    // var load10AM = function(){
-    //     var time = moment().format('10:00')
-    //     // AM10.innerHTML = "<p>" + time + "</p>";
-    // }
-    // load10AM()
-
-    // var load11AM = function(){
-    //     var time = moment().format('11:00')
-    //     // AM11.innerHTML = "<p>" + time + "</p>";
-    // }
-    // load11AM()
-
 }
 loadTasks()
 
@@ -91,17 +63,6 @@ var saveTasks = function(event){
 
     var pickedBoxAreaId = pickedBoxArea.getAttribute("data-target")
     console.log(pickedBoxAreaId)
-
-    // var pickedBoxTextArea = 
-
-    
-    // console.log(pickedBoxArea)
-
-
-    // if(pickedTextTarget = )
-
-  
-
 
     var taskText = pickedBoxArea.querySelector("textarea").value
     console.log(taskText)
@@ -121,18 +82,6 @@ var saveTasks = function(event){
 }
 
 scheduleArea.addEventListener("click", saveTasks);
-
-// var grabAnswerValue = function(event){
-//     var targetEl = event.target;
-
-//     if(targetEl.matches('.button-style')){
-//         var pickedAnswer = event.target.getAttribute('answer-value')
-//         nextQuestion(pickedAnswer)
-//     }
-// }
-
-// quiz.addEventListener("click", grabAnswerValue)
-
 
 
 // var refreshTasks = function(){
