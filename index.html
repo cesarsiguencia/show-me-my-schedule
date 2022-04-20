@@ -18,7 +18,7 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./Develop/style.css" />
     <title>Work Day Scheduler</title>
   </head>
 
@@ -28,11 +28,57 @@
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
-    <div class="container">
+
+    <div id="content-area">
+      <div class="container">
       <!-- Timeblocks go here -->
+        <div class="blocks row">
+          <div class="col-2">
+            <p>9AM</p>
+          </div>
+
+         
+          <textarea class="col-8" id="block-one" placeholder="add stuff here"></textarea>
+         
+           
+          <button class="saveBtn col-2" id="btn-one">SAVE</button>
+    
+        </div>
+
+        <div class="blocks row">
+          <div class="col-2">
+            <p>10AM</p>
+          </div>
+
+          <div class="col-8" id="block-two">
+            <p>STUFF SHOULD GO HERE</p>
+          </div>
+           
+          <div class="col-2">
+            <button class="saveBtn">SAVE</button>
+          </div>
+        </div>
+
+        <div class="blocks row">
+          <div class="col-2">
+            <p>11AM</p>
+          </div>
+
+          <div class="col-8" id="block-three">
+            <p>STUFF SHOULD GO HERE</p>
+          </div>
+           
+          <div class="col-2">
+            <button>SAVE</button>
+          </div>
+        </div>
+      </div>
+  
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./Develop/sample.js"></script>
   </body>
 </html>
