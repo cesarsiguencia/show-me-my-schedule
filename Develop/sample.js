@@ -1,10 +1,11 @@
 // add id's as time 1,2,3,4,5 to divs under the calendar
 
-var assignments = {}
-var scheduleArea = document.querySelector("#content-area")
+var assignments = []
+var scheduleArea = document.querySelector(".container")
+var hourBoxArea = document.querySelector(".row")
 
 var timeElement = document.querySelector("#currentDay")
-var AM9 = document.querySelector("#block-one")
+var AM9 = document.querySelector("#one")
 var AM9Btn = document.querySelector("#btn-one")
 var AM10 = document.querySelector("#block-two")
 var AM11 = document.querySelector("#block-three")
@@ -26,55 +27,100 @@ var loadTasks = function(){
 
     var saved = JSON.parse(localStorage.getItem("tasks"))
     console.log(saved)
+    assignments = saved
+    console.log(assignments)
 
-    var load9AM = function(){
+    assignments.forEach(task => {
+        console.log(task)
 
-        AM9.innerHTML = saved.nine9AM
+        var pickedBoxId = task.id
+        console.log(pickedBoxId)
 
-        var time = moment(saved.block, "L").set("hour", 17);
+        var pickedBoxArea = document.querySelector(".row[data-target='" + pickedBoxId+ "']")
+
+        var taskText = pickedBoxArea.querySelector("textarea")
+
+        taskText.innerHTML = task.textBox
+
+        var time = moment(task.block, "L").set("hour", 17);
 
         console.log(time)
-        if(moment(time).isAfter(moment().format('MMMM Do YYYY, 09:00 a'))){
-            AM9.addClass(".past")
-        }
-    }
+        // if(moment(time).isAfter(moment().format('MMMM Do YYYY, 09:00 a'))){
+        //     AM9.addClass(".past")
+        // }
+    })
 
-    load9AM()
 
-    var load10AM = function(){
-        var time = moment().format('10:00')
-        // AM10.innerHTML = "<p>" + time + "</p>";
-    }
-    load10AM()
 
-    var load11AM = function(){
-        var time = moment().format('11:00')
-        // AM11.innerHTML = "<p>" + time + "</p>";
-    }
-    load11AM()
+
+
+
+    // var load9AM = function(){
+
+
+    // }
+
+    // load9AM()
+
+    // var load10AM = function(){
+    //     var time = moment().format('10:00')
+    //     // AM10.innerHTML = "<p>" + time + "</p>";
+    // }
+    // load10AM()
+
+    // var load11AM = function(){
+    //     var time = moment().format('11:00')
+    //     // AM11.innerHTML = "<p>" + time + "</p>";
+    // }
+    // load11AM()
 
 }
 loadTasks()
 
-var saveTasks = function(){
+var saveTasks = function(event){
+
+    var targetEl = event.target
+
+    if(targetEl.matches('.saveBtn')){
+    var pickedTextTarget = event.target.getAttribute('data-target')
+    console.log(pickedTextTarget)
+    }
+
+    var pickedBoxArea = document.querySelector(".row[data-target='" +pickedTextTarget+ "']")
+    console.log(pickedBoxArea)
+
+    var pickedBoxAreaId = pickedBoxArea.getAttribute("data-target")
+    console.log(pickedBoxAreaId)
+
+    // var pickedBoxTextArea = 
+
+    
+    // console.log(pickedBoxArea)
 
 
-    var taskText = document.querySelector("textarea").value
+    // if(pickedTextTarget = )
+
+  
+
+
+    var taskText = pickedBoxArea.querySelector("textarea").value
     console.log(taskText)
     var time = moment().format('MMMM Do YYYY, h:mm a')
 
-    assignments = {
-        nine9AM: taskText,
-        block: time    
+    var task = {
+            id: pickedBoxAreaId,
+            textBox: taskText,
+            block: time,
     }
-
+    console.log(task)
+    assignments.push(task)
     console.log(assignments)
 
     localStorage.setItem("tasks", JSON.stringify(assignments))
 
 }
 
-AM9Btn.addEventListener("click", saveTasks);
+scheduleArea.addEventListener("click", saveTasks);
 
 // var grabAnswerValue = function(event){
 //     var targetEl = event.target;
