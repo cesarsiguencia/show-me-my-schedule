@@ -7,7 +7,7 @@ var showTime = function(){
     timeElement.innerHTML = "<p>" + time + "</p>";
 }
 showTime()
-setInterval(showTime ,10000)
+
 
 var addCSS = function(block, blockTime){
 
@@ -19,24 +19,24 @@ var addCSS = function(block, blockTime){
 
     if (roundedTime.isAfter(blockTime)){
         $(block).addClass("past")
+        console.log('SHOULD BE YELLOW')
     } 
     
     if (roundedTime.isBefore(blockTime)){
         $(block).addClass("future") 
-    } 
-
-    if (roundedTime = blockTime){
-        console.log('they equal')
-        $(block).addClass("present")
+        console.log('SHOULD BE GREEEN')
     }
 
-
-
+    // if (roundedTime = blockTime){
+    //     $(block).addClass("present")
+    //     console.log('SHOULD BE RRED')
+    // }
     // if (roundedTime === blo)
     // else {
     //     console.log("NOOOOOO", blockTime)
     // }
 }
+
 
 var grabTimefromBlock = function(){
 
@@ -51,8 +51,10 @@ var grabTimefromBlock = function(){
         addCSS(block, blockTime)
     }
  }
-
 grabTimefromBlock()
+
+setInterval(showTime, grabTimefromBlock ,10000)
+
 
 var loadTasks = function(){
     var saved = JSON.parse(localStorage.getItem("tasks"))
