@@ -8,38 +8,20 @@ var showTime = function(){
 }
 showTime()
 
-
 var addCSS = function(block, blockTime){
-
     var time = moment()
-    // console.log(time)
     var roundedTime = time.startOf('hour')
-    console.log(roundedTime)
-    console.log(blockTime)
 
     if (roundedTime.isAfter(blockTime)){
         $(block).addClass("past")
-        console.log('SHOULD BE YELLOW')
     } 
     
     if (roundedTime.isBefore(blockTime)){
         $(block).addClass("future") 
-        console.log('SHOULD BE GREEEN')
     }
-
-    // if (roundedTime = blockTime){
-    //     $(block).addClass("present")
-    //     console.log('SHOULD BE RRED')
-    // }
-    // if (roundedTime === blo)
-    // else {
-    //     console.log("NOOOOOO", blockTime)
-    // }
 }
 
-
 var grabTimefromBlock = function(){
-
     var blockCounter = 0
 
     for (var i = 0; i < 9; i++){
@@ -50,11 +32,10 @@ var grabTimefromBlock = function(){
         blockCounter++
         addCSS(block, blockTime)
     }
- }
+}
 grabTimefromBlock()
 
 setInterval(showTime, grabTimefromBlock ,10000)
-
 
 var loadTasks = function(){
     var saved = JSON.parse(localStorage.getItem("tasks"))
@@ -91,5 +72,4 @@ var saveTasks = function(event){
     assignments.push(task)
     localStorage.setItem("tasks", JSON.stringify(assignments))
 }
-
 scheduleArea.addEventListener("click", saveTasks);
