@@ -19,6 +19,10 @@ var addCSS = function(block, blockTime){
     if (roundedTime.isBefore(blockTime)){
         $(block).addClass("future") 
     }
+
+    if (roundedTime.isSame(blockTime)){
+        $(block).addClass("present") 
+    }
 }
 
 var grabTimefromBlock = function(){
