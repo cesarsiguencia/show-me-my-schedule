@@ -47,7 +47,7 @@ textarea{
 }
 
 .past {
-  background-color: #d3d3d3;
+  background-color: lightyellow;
   color: white;
 }
 
@@ -75,12 +75,3 @@ textarea{
   transition: all .3s ease-in-out;
 
 }
-
-.warning {
-  background-color: yellow;
-}
-
-.future {
-  background-color: green;
-}
-

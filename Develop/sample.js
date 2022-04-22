@@ -11,26 +11,42 @@ setInterval(showTime ,10000)
 
 var addCSS = function(block, blockTime){
 
-    if (moment().isAfter(blockTime)){
-        $(block).addClass("warning")
+    var time = moment()
+    // console.log(time)
+    var roundedTime = time.startOf('hour')
+    console.log(roundedTime)
+    console.log(blockTime)
 
-    } else if (moment().isBefore(blockTime)){
+    if (roundedTime.isAfter(blockTime)){
+        $(block).addClass("past")
+    } 
+    
+    if (roundedTime.isBefore(blockTime)){
         $(block).addClass("future") 
     } 
-    else {
-        console.log("NOOOOOO", blockTime)
+
+    if (roundedTime = blockTime){
+        console.log('they equal')
+        $(block).addClass("present")
     }
+
+
+
+    // if (roundedTime === blo)
+    // else {
+    //     console.log("NOOOOOO", blockTime)
+    // }
 }
 
 var grabTimefromBlock = function(){
 
-    var blockCounter = 1
+    var blockCounter = 0
 
-    for (var i = 1; i < 10; i++){
+    for (var i = 0; i < 9; i++){
         var block =""
         var block = document.querySelector(".col-8[block-hour='hour-" + blockCounter+ "']")
-        var add8Hours = blockCounter + 8
-        var blockTime = moment(add8Hours+":00", "h:mm")
+        var add9Hours = blockCounter + 9
+        var blockTime = moment(add9Hours+":00", "h:mm")
         blockCounter++
         addCSS(block, blockTime)
     }
