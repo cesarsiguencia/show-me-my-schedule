@@ -10,6 +10,7 @@ Have fun staying organized!
 
 ### Website Link
 
+https://cesarsiguencia.github.io/show-me-my-schedule/
 
 
 ### Screenshots 
