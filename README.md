@@ -17,5 +17,3 @@ https://cesarsiguencia.github.io/show-me-my-schedule/
 
 ### Screenshots 
 ![Screenshot 1](/screenshots/screenshots-1.jpeg)
-
-![Screenshot 2](/screenshots/screenshots-2.jpeg))
